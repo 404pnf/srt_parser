@@ -40,4 +40,13 @@ OUTPUT2 = "text\ntext 2"
     assert_equal '', remove_empty_lines("\t\n"), 'tabs'
     assert_equal '', remove_empty_lines("\t \n"), 'spaces and tabs'
   end
+
+  def test_carriage_return_to_linefeed 
+    assert_equal "\n", carriage_return_to_linefeed("\r\n\r"), 'remove windows carriage return'
+  end
+
+  def test_remove_bom
+    assert_equal '', remove_bom("\uFEFF"), 'remove Byte Order Mark, aka bom'
+  end
+
 end
