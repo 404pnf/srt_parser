@@ -17,10 +17,8 @@ path = File.expand_path ARGV[0]
 
 Find.find(path) do |file|
   next unless file =~ /\.srt$/i
-  text = carriage_return_to_linefeed File.read(file)
-  text = iyc_srt_to_text(text)
-  text = iyc_remove_tags(text)
-  text = iyc_remove_empty_lines text
+  text =  File.read(file)
+  text = srt_to_text(text)
   filename = File.basename(file, '.srt')
   dir = File.dirname(file)
   new_file = File.join(dir, "#{filename}.txt")
